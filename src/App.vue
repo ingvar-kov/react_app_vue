@@ -1,47 +1,47 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script>
+  export default {
+    data() {
+      return {
+        users: [],
+        user_name: '',
+        user_pass: '',
+        user_mail: ''
+      }
+    },
+    methods: {
+      send_data() {
+        this.users.push({
+          name: this.user_name,
+          pass: this.user_pass,
+          mail: this.user_mail
+        })
+      }
+    }
+  }
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <input type="text" v-model="user_name" placeholder="Имя">
+  <input type="password" v-model="user_pass" placeholder="Пароль">
+  <input type="email" v-model="user_mail" placeholder="E-mail">
+  <button @click="send_data()">Отправить</button>
+  <p>{{ users }}</p>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+  input {
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
+  button {
+    display: block;
+    margin: 20px;
+    padding: 10px;
+    color: rgb(43, 43, 43);
+    background-color: rgb(68, 236, 68);
+    font-weight: 600;
+    border-radius: 5px;
+    border: none;
   }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
