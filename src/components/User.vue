@@ -33,15 +33,15 @@
         margin-right: 10px;
         padding: 10px;
         border-radius: 5px;
-        background-color: rgb(255, 162, 162);
-        color: rgb(122, 0, 0);
+        background-color: rgb(255, 218, 218);
+        color: rgb(85, 85, 85);
         font-weight: bold;
         cursor: pointer;
         float: right;
         transition: 500ms ease;
     }
     button:hover {
-        transform: translateY(-3px);
-        background-color: rgb(255, 218, 218);
+        transform: translateY(3px);
+        background-color: rgb(255, 123, 16);
     }
 </style>

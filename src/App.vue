@@ -40,15 +40,20 @@
 
 <template>
   <div className="wrapper">
-    <input type="text" v-model="user_name" placeholder="Имя">
-    <input type="password" v-model="user_pass" placeholder="Пароль">
-    <input type="email" v-model="user_mail" placeholder="E-mail">
-    <p className="error">{{ error }}</p>
-    <button @click="send_data()">Отправить</button>
+    <div className="input">
+      <input type="text" v-model="user_name" placeholder="Имя">
+      <input type="password" v-model="user_pass" placeholder="Пароль">
+      <input type="email" v-model="user_mail" placeholder="E-mail">
+    </div>
+    <div className="info_block">
+      <button @click="send_data()">Отправить</button>
+      <p className="error">{{ error }}</p>
+    </div>
     <div v-if="users.length == 0" className="user">
       <p>Нет активных пользователей</p>
     </div>
     <User v-for="(el, index) in users" :key="index" :user="el" :index="index" :delete_user="delete_user"/>
+    <img src="./images/21.png" className="back_21">
   </div>
 </template>
 
@@ -62,32 +67,65 @@
     padding: 10px;
     border-style: none;
     border-radius: 5px;
-    border-color: rgb(103, 85, 119);
+    cursor: pointer;
+    transition: 100ms;
+  }
+  input:focus {
+    outline: 2px solid rgb(171, 0, 194);
   }
   button {
-    display: block;
+    display: inline-block;
     margin: 20px;
     padding: 10px;
     color: rgb(43, 43, 43);
-    background-color: rgb(165, 255, 165);
+    background-color: rgb(99, 255, 146);
     font-weight: 600;
     border-radius: 5px;
     border: none;
+    transition: 500ms;
+    cursor: pointer;
+  }
+  button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 0 2px rgba(98, 0, 238, 0.2);
+  }
+  .input {
+    display: block;
+  }
+  .info_block {
+    display: block;
+    margin-bottom: 20px;
+  }
+  .error {
+    margin: 20px;
+    display: inline-block;
+    font-weight: 700;
   }
   .wrapper {
+    position: relative;
     padding: 40px;
     margin: 10px;
     margin-top: 20px;
-    background-color: rgb(198, 169, 236);
+    background: linear-gradient(45deg, #cefff7, #ba4dec);
     border-radius: 20px;
+    background-image: ;
   }
   .user {
     margin: 20px;
     padding: 20px;
-    background-color: rgb(227, 205, 255);
+    background-color: rgb(255, 255, 255);
     border-radius: 5px;
     border: none;
     display: inline-block;
     width: 20%;
+  }
+  .user p {
+    color: rgb(117, 117, 117);
+  }
+  .back_21 {
+    position: absolute;
+    width: 25vh;
+    top: 20px;
+    right: 20px;
   }
 </style>
